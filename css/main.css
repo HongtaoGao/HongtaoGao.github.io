@@ -453,7 +453,7 @@ td {
   }
 }
 .use-motion .motion-element {
-  opacity: 0;
+  opacity: 1;
 }
 pre,
 .highlight {
@@ -848,7 +848,7 @@ body {
   margin-top: 0;
 }
 .sidebar {
-  width: 0;
+  width: 320px;
   position: fixed;
   left: 0;
   top: 0;
@@ -867,12 +867,13 @@ body {
 }
 @media (min-width: 768px) and (max-width: 991px) {
   .sidebar {
-    display: none !important;
+    width: 320px;
+    display: block !important;
   }
 }
 @media (max-width: 767px) {
   .sidebar {
-    display: none !important;
+    display: block !important;
   }
 }
 .sidebar-inner {
@@ -961,7 +962,7 @@ body {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ffc2a4;
+  background: #42a4e5;
 }
 .sidebar-nav {
   margin: 0 0 20px;
