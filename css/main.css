@@ -850,7 +850,7 @@ body {
 .sidebar {
   width: 0;
   position: fixed;
-  right: 0;
+  left: 0;
   top: 0;
   bottom: 0;
   z-index: 1040;
@@ -961,7 +961,7 @@ body {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #17598f;
+  background: #ffc2a4;
 }
 .sidebar-nav {
   margin: 0 0 20px;
