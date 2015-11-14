@@ -624,11 +624,11 @@ a {
   border: 1px solid #cf5d0f;
 }
 #header .header-nav .social a.github {
-  background: url("/img/github.png") center no-repeat #bb4409;
-  border: 1px solid #bb4409;
+  background: url("/img/github.png") center no-repeat #1ea563;
+  border: 1px solid #1fcf6d;
 }
 #header .header-nav .social a.github:hover {
-  border: 1px solid #bb4409;
+  border: 1px solid #1fcf6d;
 }
 #header .header-nav .social a.facebook {
   background: url("/img/facebook.png") center no-repeat #3b5998;
@@ -711,6 +711,7 @@ a {
   left: 300%;
   text-align: left;
   line-height: 30px;
+  color: #fff;
 }
 .duoshuo {
   padding: 0 40px;
