@@ -209,13 +209,13 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>为了尽快熟悉业务，老大让看《搜索引擎–原理技术与系统》这本书，算是入门书，为了记录自己的学习过程，特整理此系列–搜索引擎学习笔记。此为第一篇，主要介绍搜索引擎的工作原理和体系结构。</p>
-<h4 id="1-基本要求">1.基本要求</h4><p>搜索引擎是一个网络软件系统，用户输入查询词，搜索引擎返回结果列表。示意图如下所示：</p>
+<h2 id="1-_基本要求">1. 基本要求</h2><p>搜索引擎是一个网络软件系统，用户输入查询词，搜索引擎返回结果列表。示意图如下所示：</p>
 <p><img src="https://github.com/HongtaoGao/HongtaoGao.github.io/raw/master/assets/blogImg/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E7%A4%BA%E6%84%8F%E5%9B%BE.png?" alt=""></p>
 <p>查询词或短语记作q，返回网页信息列表L（标题、URL、摘要）。这里对搜索引擎有几个最基本的要求：</p>
 <p><strong>1.</strong> <strong>可以接受的时间</strong>：响应时间，一般在“秒”量级。这是衡量搜索引擎指标的一个基本指标，响应时间不仅要能够满足单个用户查询，而且在设计负载的情况下满足所有用户。</p>
 <p><strong>2.</strong> <strong>匹配</strong>：指的是网页内容与查询短语的匹配程度，最简单、最常用的形式就是q在其中直接出现。</p>
 <p><strong>3.</strong> <strong>列表</strong>：是有顺序的，和q相关的网页有很多，要采用算法把最重要的网页、最相关的网页排到前面。 </p>
-<h4 id="2-、工作流程">2.、工作流程</h4><p>搜索引擎的工作流程图：</p>
+<h2 id="2-_工作流程">2. 工作流程</h2><p>搜索引擎的工作流程图：</p>
 <p><img src="https://github.com/HongtaoGao/HongtaoGao.github.io/raw/master/assets/blogImg/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E4%B8%89%E6%AE%B5%E5%BC%8F%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B.png" alt="搜索引擎工作流程图"></p>
 <h6 id="2-1网页搜集">2.1网页搜集</h6><p>关于网页搜集有几点需要注意：</p>
 <p><strong>1.抓取时机</strong>：为了满足搜索的实时性，大规模的搜索引擎应该是预先搜集好一批网页，而不是在用户查询时再去网上搜集网页。</p>
