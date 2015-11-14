@@ -11,9 +11,10 @@
 <meta property="og:url" content="http://HongtaoGao.github.io/2015/11/14/第一、二章：搜索引擎的工作原理和体系结构/index.html">
 <meta property="og:site_name" content="高洪涛的成长之路">
 <meta property="og:description" content="为了尽快熟悉业务，老大让看《搜索引擎–原理技术与系统》这本书，算是入门书，为了记录自己的学习过程，特整理此系列–搜索引擎学习笔记。此为第一篇，主要介绍搜索引擎的工作原理和体系结构。">
+<meta property="og:image" content="https://raw.githubusercontent.com/HongtaoGao/HongtaoGao.github.io/master/assets/blogImg/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E7%9B%B4%E8%A7%82.jpg">
 <meta property="og:image" content="https://github.com/HongtaoGao/HongtaoGao.github.io/raw/master/assets/blogImg/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E7%A4%BA%E6%84%8F%E5%9B%BE.png?">
 <meta property="og:image" content="https://github.com/HongtaoGao/HongtaoGao.github.io/raw/master/assets/blogImg/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E4%B8%89%E6%AE%B5%E5%BC%8F%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B.png">
-<meta property="og:updated_time" content="2015-11-14T13:34:21.186Z">
+<meta property="og:updated_time" content="2015-11-14T13:43:18.108Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="第一、二章：搜索引擎的工作原理和体系结构">
 <meta name="twitter:description" content="为了尽快熟悉业务，老大让看《搜索引擎–原理技术与系统》这本书，算是入门书，为了记录自己的学习过程，特整理此系列–搜索引擎学习笔记。此为第一篇，主要介绍搜索引擎的工作原理和体系结构。">
@@ -220,7 +221,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>为了尽快熟悉业务，老大让看《搜索引擎–原理技术与系统》这本书，算是入门书，为了记录自己的学习过程，特整理此系列–搜索引擎学习笔记。此为第一篇，主要介绍搜索引擎的工作原理和体系结构。<br><a id="more"></a></p>
+        <p><img src="https://raw.githubusercontent.com/HongtaoGao/HongtaoGao.github.io/master/assets/blogImg/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E7%9B%B4%E8%A7%82.jpg" alt=""></p>
+<p>为了尽快熟悉业务，老大让看《搜索引擎–原理技术与系统》这本书，算是入门书，为了记录自己的学习过程，特整理此系列–搜索引擎学习笔记。此为第一篇，主要介绍搜索引擎的工作原理和体系结构。<br><a id="more"></a></p>
 <h2 id="1-_基本要求">1. 基本要求</h2><p>搜索引擎是一个网络软件系统，用户输入查询词，搜索引擎返回结果列表。示意图如下所示：</p>
 <p><img src="https://github.com/HongtaoGao/HongtaoGao.github.io/raw/master/assets/blogImg/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E7%A4%BA%E6%84%8F%E5%9B%BE.png?" alt=""></p>
 <p>查询词或短语记作q，返回网页信息列表L（标题、URL、摘要）。这里对搜索引擎有几个最基本的要求：</p>
