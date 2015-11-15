@@ -13,7 +13,8 @@
 <meta property="og:description" content="为了尽快熟悉业务，老大让看《搜索引擎–原理技术与系统》这本书，算是入门书，为了记录自己的学习过程，特整理此系列–搜索引擎学习笔记。此为第一篇，主要介绍搜索引擎的工作原理和体系结构。">
 <meta property="og:image" content="https://github.com/HongtaoGao/HongtaoGao.github.io/raw/master/assets/blogImg/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E7%A4%BA%E6%84%8F%E5%9B%BE.png?">
 <meta property="og:image" content="https://github.com/HongtaoGao/HongtaoGao.github.io/raw/master/assets/blogImg/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E4%B8%89%E6%AE%B5%E5%BC%8F%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B.png">
-<meta property="og:updated_time" content="2015-11-14T13:49:15.735Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/HongtaoGao/HongtaoGao.github.io/master/assets/blogImg/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84.png">
+<meta property="og:updated_time" content="2015-11-15T13:31:35.756Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="第一、二章：搜索引擎的工作原理和体系结构">
 <meta name="twitter:description" content="为了尽快熟悉业务，老大让看《搜索引擎–原理技术与系统》这本书，算是入门书，为了记录自己的学习过程，特整理此系列–搜索引擎学习笔记。此为第一篇，主要介绍搜索引擎的工作原理和体系结构。">
@@ -242,7 +243,9 @@
 <p><strong>1.查询方式和匹配</strong>：主流的搜索引擎查询方式：用一个词或者短语直接表达信息需求，希望网页中含有改词或者该短语中的词。首先短语q0被分词成为一个词的序列q={t1,t2,…,tm}。q中每个词对应的倒排文件的交集就是查询结果对应的文档集合。</p>
 <p><strong>2.关键词的提取</strong>：结果排序：给定查询结果集合R={r1,r2,…,rn}，所谓列表就是按照某种评价方式，确定R中元素的顺序。相关性指标：一篇文档中包含的查询q中的那些词越多，就越相关；若一个词在越多文档中出现，则该词用于区分文档相关性的作用就越小。将“预处理”形成独立于查询词的重要性指标和相关性指标结合形成最终的排序，是目前搜索引擎采用的主要方法。</p>
 <p><strong>3.文档摘要</strong>：一般采用“动态摘要方式”，即在响应查询的时候，根据查询词在文档中的位置，提取出周围的文字，在显示时将查询词标亮。</p>
-<h2 id="3-_体系结构">3. 体系结构</h2><p>　　                 </p>
+<h2 id="3-_体系结构">3. 体系结构</h2><p>搜索引擎体系结构如图：</p>
+<p><img src="https://raw.githubusercontent.com/HongtaoGao/HongtaoGao.github.io/master/assets/blogImg/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84.png" alt="搜索引擎体系结构"></p>
+<p>　　                 </p>
 
       
     </div>
