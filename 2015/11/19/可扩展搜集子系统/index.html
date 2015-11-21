@@ -5,17 +5,17 @@
   
   <title>可扩展搜集子系统 | 高洪涛的成长之路</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Web上成千上万的WWW服务器通过网页之间的链接构成海量信息，各个主机之间相对独立。单机处理系统受限于CPU的处理能力、磁盘容量，不具备处理海量信息的能力。采用并行处理是自然的选择，并行性体现在两个层次：节点间采用数据并行，节点内采用任务并行，即首先是确定一个在节点间动态划分网页URL的算法，保证不同节点收集的网页不会重复，而在节点内由抓取进程自由获取下一个任务。本节就介绍分布式Web搜集系统。">
+  <meta name="description" content="Web上成千上万的WWW服务器通过网页之间的链接构成海量信息，各个主机之间相对独立。单机处理系统受限于CPU的处理能力、磁盘容量，不具备处理海量信息的能力。采用并行处理是自然的选择，本节就介绍分布式Web搜集系统。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="可扩展搜集子系统">
 <meta property="og:url" content="http://HongtaoGao.github.io/2015/11/19/可扩展搜集子系统/index.html">
 <meta property="og:site_name" content="高洪涛的成长之路">
-<meta property="og:description" content="Web上成千上万的WWW服务器通过网页之间的链接构成海量信息，各个主机之间相对独立。单机处理系统受限于CPU的处理能力、磁盘容量，不具备处理海量信息的能力。采用并行处理是自然的选择，并行性体现在两个层次：节点间采用数据并行，节点内采用任务并行，即首先是确定一个在节点间动态划分网页URL的算法，保证不同节点收集的网页不会重复，而在节点内由抓取进程自由获取下一个任务。本节就介绍分布式Web搜集系统。">
+<meta property="og:description" content="Web上成千上万的WWW服务器通过网页之间的链接构成海量信息，各个主机之间相对独立。单机处理系统受限于CPU的处理能力、磁盘容量，不具备处理海量信息的能力。采用并行处理是自然的选择，本节就介绍分布式Web搜集系统。">
 <meta property="og:image" content="https://raw.githubusercontent.com/HongtaoGao/HongtaoGao.github.io/master/assets/blogImg/%E5%88%86%E5%B8%83%E5%BC%8Fweb%E6%90%9C%E9%9B%86%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84.png">
-<meta property="og:updated_time" content="2015-11-19T15:37:33.547Z">
+<meta property="og:updated_time" content="2015-11-21T07:15:15.247Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="可扩展搜集子系统">
-<meta name="twitter:description" content="Web上成千上万的WWW服务器通过网页之间的链接构成海量信息，各个主机之间相对独立。单机处理系统受限于CPU的处理能力、磁盘容量，不具备处理海量信息的能力。采用并行处理是自然的选择，并行性体现在两个层次：节点间采用数据并行，节点内采用任务并行，即首先是确定一个在节点间动态划分网页URL的算法，保证不同节点收集的网页不会重复，而在节点内由抓取进程自由获取下一个任务。本节就介绍分布式Web搜集系统。">
+<meta name="twitter:description" content="Web上成千上万的WWW服务器通过网页之间的链接构成海量信息，各个主机之间相对独立。单机处理系统受限于CPU的处理能力、磁盘容量，不具备处理海量信息的能力。采用并行处理是自然的选择，本节就介绍分布式Web搜集系统。">
   
     <link rel="alternative" href="/atom.xml" title="高洪涛的成长之路" type="application/atom+xml">
   
@@ -219,10 +219,27 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Web上成千上万的WWW服务器通过网页之间的链接构成海量信息，各个主机之间相对独立。单机处理系统受限于CPU的处理能力、磁盘容量，不具备处理海量信息的能力。采用并行处理是自然的选择，并行性体现在两个层次：节点间采用数据并行，节点内采用任务并行，即首先是确定一个在节点间动态划分网页URL的算法，保证不同节点收集的网页不会重复，而在节点内由抓取进程自由获取下一个任务。本节就介绍分布式Web搜集系统。<br><a id="more"></a><br>布式Web搜集系统结构如图：</p>
+        <p>Web上成千上万的WWW服务器通过网页之间的链接构成海量信息，各个主机之间相对独立。单机处理系统受限于CPU的处理能力、磁盘容量，不具备处理海量信息的能力。采用并行处理是自然的选择，本节就介绍分布式Web搜集系统。<br><a id="more"></a><br>并行性体现在两个层次：节点间采用数据并行，节点内采用任务并行，即首先是确定一个在节点间动态划分网页URL的算法，保证不同节点收集的网页不会重复，而在节点内由抓取进程自由获取下一个任务。</p>
+<p>布式Web搜集系统结构如图：</p>
 <div style="text-align: center"><br><img src="https://raw.githubusercontent.com/HongtaoGao/HongtaoGao.github.io/master/assets/blogImg/%E5%88%86%E5%B8%83%E5%BC%8Fweb%E6%90%9C%E9%9B%86%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84.png" alt="分布式Web搜集系统结构"><br></div>
 
 <p>抓取进程：负责根据URL抓取网页，分析和存储网页；不负责更新任务池，只是将得到的链接传到响应的协调进程。</p>
+<p>协调进程：根据本节点抓取进程和从其他节点的协调进程来的信息，维护本节点的visited-table和unvisited-table。</p>
+<p>调度模块：维护系统内所有登记的协调进程的信息，包括它们的IP地址和端口号。当任何一个协调进程的信息有所改变时，调度模块负责将新的信息传送给其他协调进程，便于建立连接和变更连接。</p>
+<p>分布式Web搜集系统结构主要有两个问题需要解决：节点间URL的划分策略和系统的动态可配置性设计。</p>
+<h2 id="节点间URL的划分策略">节点间URL的划分策略</h2><p>首先约定些术语：URLs={URL1,URL2,…}表示完成收集的网页地址集合。HOST(URLs)表示URLs所涉及的主机的域名或者其数量。n表示并行收集系统的节点数，[n]={0,1,2,…,n-1}表示网页搜集节点的集合。</p>
+<p>基本思路：对HOST(URLs)进行随机分配，即建立一个从HOST(URLs)到[n]的映射。一旦一个HOST[URL]映射到了某个搜集节点，该搜集节点就会负责HOST(URL)下的所有网页。尽管不同的Web站点含有的网页数量会相差很大，但由于HOST(URLs)&gt;&gt;n，并且如果我们的分分配函数足够随机，则可以认为分配到各个节点上的网页比较均匀。</p>
+<p>具体来说：每个节点维护两张表，visited-table和unvisited-table,分别代表到目前为止本节点已经抓过的网页和需要抓取的网页。协调进程的工作是根据本节点抓取进程和从其他节点的协调进程来的信息，维护本节点的visited-table和unvisited-table。</p>
+<p>协调进程算法描述：1.若收到其他节点传来的URL，根据是否已经抓取放到相应的表中；2.若收到抓取进程的返回的URL，则从URL对应的网页中提取超链接links，将URL存到visited-table，并从unvisited-table分配任务给该抓取进。对每个超链接计算HOST(link)，若是本节点负责，转1，否则将link发给HOST(link)节点。</p>
+<p>每个节点visited-table和unvisited-table此消彼长，unvisited-table就是抓取任务池，在整个收集过程中先变大后变小，理论上是可以最终为空的。</p>
+<h2 id="系统的可配置性设计">系统的可配置性设计</h2><p>从系统的实际运行角度出发，要允许在运行过程中添加和删除节点机器，即系统的动态可配置性设计。</p>
+<p>书上给出了3中调度URL方案并分析其动态可配置性，通过节点增减1的情况进行分析，设WWW主机数为m，系统初始节点数为n，ni、nj表示系统中任意两个节点。</p>
+<p><strong><strong>1.采用散列函数动态调度URL</strong></strong></p>
+<p>很显然n-&gt;n+1和n-&gt;n-1时，都会导致重复收集网页的情况。</p>
+<p><strong><strong>2.节点额外记录WWW主机表</strong></strong></p>
+<p>每个节点附加存储两张表，WWWW主机表和已访问的URL表。增减节点需进行主机分配，需要传送主机表和已访问的URL表，增加了主机之间的通信量。</p>
+<p><strong><strong>3.逻辑二级映射的方法</strong></strong></p>
+<p>何为二级映射：现将URL经过散列函数映射到逻辑节点，再将逻辑节点映射到物理节点。用数组A存储，每个元素下表为逻辑节点，内容为逻辑节点对应的物理节点。增减物理节点时需要对A做相应的修改。同第二种方法相比，这种方法多一次映射，同样每个节点要保存以访问URL，随主机迁移时需要转给新的节点；但不必存储主机表，减少节点之间的通信量。</p>
 
       
     </div>
