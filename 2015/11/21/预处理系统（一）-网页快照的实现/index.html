@@ -5,16 +5,18 @@
   
   <title>预处理系统（一）----网页快照的实现 | 高洪涛的成长之路</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="追求卓越，成功就会不经意间找到你！">
+  <meta name="description" content="搜索引擎在收录网页时，对网页进行备份，存在自己的服务器缓存里，当用户在搜索引擎中点击“网页快照”链接时，搜索引擎将Spider系统当时所抓取并保存的网页内容展现出来，称为“网页快照”。本篇就介绍网页快照的基本实现————索引网页库。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="预处理系统（一）----网页快照的实现">
 <meta property="og:url" content="http://HongtaoGao.github.io/2015/11/21/预处理系统（一）-网页快照的实现/index.html">
 <meta property="og:site_name" content="高洪涛的成长之路">
-<meta property="og:description" content="追求卓越，成功就会不经意间找到你！">
-<meta property="og:updated_time" content="2015-11-21T11:28:21.595Z">
+<meta property="og:description" content="搜索引擎在收录网页时，对网页进行备份，存在自己的服务器缓存里，当用户在搜索引擎中点击“网页快照”链接时，搜索引擎将Spider系统当时所抓取并保存的网页内容展现出来，称为“网页快照”。本篇就介绍网页快照的基本实现————索引网页库。">
+<meta property="og:image" content="https://raw.githubusercontent.com/HongtaoGao/HongtaoGao.github.io/master/assets/blogImg/%E7%BD%91%E9%A1%B5%E5%BF%AB%E7%85%A71.PNG">
+<meta property="og:image" content="https://raw.githubusercontent.com/HongtaoGao/HongtaoGao.github.io/master/assets/blogImg/%E7%BD%91%E9%A1%B5%E5%BF%AB%E7%85%A72.PNG">
+<meta property="og:updated_time" content="2015-11-21T11:58:29.587Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="预处理系统（一）----网页快照的实现">
-<meta name="twitter:description" content="追求卓越，成功就会不经意间找到你！">
+<meta name="twitter:description" content="搜索引擎在收录网页时，对网页进行备份，存在自己的服务器缓存里，当用户在搜索引擎中点击“网页快照”链接时，搜索引擎将Spider系统当时所抓取并保存的网页内容展现出来，称为“网页快照”。本篇就介绍网页快照的基本实现————索引网页库。">
   
     <link rel="alternative" href="/atom.xml" title="高洪涛的成长之路" type="application/atom+xml">
   
@@ -206,6 +208,10 @@
       
       <div class="article-info article-info-post">
         
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/搜索引擎学习笔记/">搜索引擎学习笔记</a></li></ul>
+	</div>
+
         
 
         <div class="clearfix"></div>
@@ -214,7 +220,21 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>搜索引擎在收录网页时，对网页进行备份，存在自己的服务器缓存里，当用户在搜索引擎中点击“网页快照”链接时，搜索引擎将Spider系统当时所抓取并保存的网页内容展现出来，称为“网页快照”。本篇就介绍网页快照的基本实现————索引网页库。<br><a id="more"></a><br>先直观体验下网页快照：</p>
+<p>百度“搜索引擎原理”：</p>
+<div style="text-align: center"><br><img src="https://raw.githubusercontent.com/HongtaoGao/HongtaoGao.github.io/master/assets/blogImg/%E7%BD%91%E9%A1%B5%E5%BF%AB%E7%85%A71.PNG" alt="网页快照1"><br></div>
+
+<p>点击“百度快照”:</p>
+<div style="text-align: center"><br><img src="https://raw.githubusercontent.com/HongtaoGao/HongtaoGao.github.io/master/assets/blogImg/%E7%BD%91%E9%A1%B5%E5%BF%AB%E7%85%A72.PNG" alt="网页快照2"><br></div>
+
+<p>可以看到网页上方有“快照”字样，你查询的关键词，和网页快照的时间，下面才是网页正文。</p>
+<p>为什么要有快照功能：</p>
+<p><strong><strong>1. 由于网页快照是存储在搜索引擎服务器中，所以查看网页快照的速度往往比直接访问网页要快。</strong></strong>：注意，点击结果标题是直接访问网页，会重新抓取网页内容显示，而快照显示的内容是提前抓取的。</p>
+<p><strong><strong>2. 网页快照中，搜索的关键词用亮色显示，用户可以点击呈现亮色的关键词直接找到关键词出现位置，便于快速找到所需信息，提高搜索效率。</strong></strong></p>
+<p><strong><strong>3. 当搜索的网页被删除或链接失效时，可以使用网页快照来查看这个网页原始的内容。</strong></strong></p>
+<p>网页快照的核心就是如何建立高效的索引，使根据URL随机存取其所指向的网页。</p>
+<p>先来看下：网页预处理</p>
+
       
     </div>
     
