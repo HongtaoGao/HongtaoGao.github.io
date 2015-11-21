@@ -14,7 +14,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/HongtaoGao/HongtaoGao.github.io/master/assets/blogImg/%E7%BD%91%E9%A1%B5%E5%BF%AB%E7%85%A71.PNG">
 <meta property="og:image" content="https://raw.githubusercontent.com/HongtaoGao/HongtaoGao.github.io/master/assets/blogImg/%E7%BD%91%E9%A1%B5%E5%BF%AB%E7%85%A72.PNG">
 <meta property="og:image" content="https://raw.githubusercontent.com/HongtaoGao/HongtaoGao.github.io/master/assets/blogImg/%E7%BD%91%E9%A1%B5%E9%A2%84%E5%A4%84%E7%90%86%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84.png">
-<meta property="og:updated_time" content="2015-11-21T13:24:39.852Z">
+<meta property="og:updated_time" content="2015-11-21T13:26:59.006Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="预处理系统（一）----网页快照的实现">
 <meta name="twitter:description" content="搜索引擎在收录网页时，对网页进行备份，存在自己的服务器缓存里，当用户在搜索引擎中点击“网页快照”链接时，搜索引擎将搜集系统当时所抓取并保存的网页内容展现出来，称为“网页快照”。本篇就介绍网页快照的基本实现————索引网页库。">
@@ -248,12 +248,23 @@ b.for each ri in R
             b2<span class="number">.2</span> 记录digest(<span class="keyword">URL</span>)和<span class="keyword">id</span>到<span class="keyword">URL</span>索引文件
             b2<span class="number">.3</span> <span class="keyword">id</span>=<span class="keyword">id</span>+<span class="number">1</span>
     <span class="keyword">end</span></span>
-</code></pre><p>网页索引文件格式：</p>
-<table><br><tbody><br><tr><td><em>文档编号</em></td><td><em>偏移位置</em></td><td><em>网页文档摘要</em></td></tr><br><tr><td>0</td><td>0</td><td>bc9ce846d7989c4534f53d423380ba70</td></tr><br><tr><td>1</td><td>76760</td><td>ec9c79896db534f5c480d4243ba73380</td></tr><br><tr><td>2</td><td>141624</td><td>846d7989c4bc9ca7034fe53380b53d42</td></tr><br><tr><td>……</td><td>……</td><td>……</td></tr><br><tr><td>12931</td><td>210383421</td><td>bc9ce989c4534f580ba70d73d4284633</td></tr><br><tr><td>12932</td><td>210411107</td><td>44233380baf553dd4bc9ce846707989c</td></tr><br></tbody><br></table>
-
-<p>URL索引文件格式：</p>
-<table><br><tbody><br><tr><td><em>URL摘要</em></td><td><em>文档编号</em></td></tr><br><tr><td>5c36868a9c5117eadbda747cbdb0725f</td><td>0</td></tr><br><tr><td>725fdbda5117ea68a9cdb0747cb5c368</td><td>1</td></tr><br><tr><td>1adbda151e725fdb7da747cbdb0725f7</td><td>2</td></tr><br><tr><td>……</td><td>……</td></tr><br><tr><td>97cb151e1db071adbda7ea68a25fca74</td><td>12931</td></tr><br></tbody><br></table>
-
+</code></pre><p>网页索引文件格式：<table></table></p>
+<p><tbody></tbody></p>
+<p><tr><td><em>文档编号</em></td><td><em>偏移位置</em></td><td><em>网页文档摘要</em></td></tr></p>
+<p><tr><td>0</td><td>0</td><td>bc9ce846d7989c4534f53d423380ba70</td></tr></p>
+<p><tr><td>1</td><td>76760</td><td>ec9c79896db534f5c480d4243ba73380</td></tr></p>
+<p><tr><td>2</td><td>141624</td><td>846d7989c4bc9ca7034fe53380b53d42</td></tr></p>
+<p><tr><td>……</td><td>……</td><td>……</td></tr></p>
+<p><tr><td>12931</td><td>210383421</td><td>bc9ce989c4534f580ba70d73d4284633</td></tr></p>
+<p><tr><td>12932</td><td>210411107</td><td>44233380baf553dd4bc9ce846707989c</td></tr><br><br></p>
+<p>URL索引文件格式：<table></table></p>
+<p><tbody></tbody></p>
+<p><tr><td><em>URL摘要</em></td><td><em>文档编号</em></td></tr></p>
+<p><tr><td>5c36868a9c5117eadbda747cbdb0725f</td><td>0</td></tr></p>
+<p><tr><td>725fdbda5117ea68a9cdb0747cb5c368</td><td>1</td></tr></p>
+<p><tr><td>1adbda151e725fdb7da747cbdb0725f7</td><td>2</td></tr></p>
+<p><tr><td>……</td><td>……</td></tr></p>
+<p><tr><td>97cb151e1db071adbda7ea68a25fca74</td><td>12931</td></tr><br><br></p>
 <p>当然，为了能够快速的对给定的URL找到对应的文档编号，需要对URL索引文件中的URL排序。</p>
 <p>总结，当用户点击网页快照的时候，搜索引擎的任务就是根据快照对应的URL找到对应的原始网页库中的内容：首先根据URL，采用二分查找算法，在URL索引文件中找到其对应文档id；再根据id在网页索引文件找到其在原始网页数据库中的偏移位置，从而定位网页并加载显示。</p>
 
