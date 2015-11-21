@@ -5,18 +5,19 @@
   
   <title>预处理系统（一）----网页快照的实现 | 高洪涛的成长之路</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="搜索引擎在收录网页时，对网页进行备份，存在自己的服务器缓存里，当用户在搜索引擎中点击“网页快照”链接时，搜索引擎将Spider系统当时所抓取并保存的网页内容展现出来，称为“网页快照”。本篇就介绍网页快照的基本实现————索引网页库。">
+  <meta name="description" content="搜索引擎在收录网页时，对网页进行备份，存在自己的服务器缓存里，当用户在搜索引擎中点击“网页快照”链接时，搜索引擎将搜集系统当时所抓取并保存的网页内容展现出来，称为“网页快照”。本篇就介绍网页快照的基本实现————索引网页库。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="预处理系统（一）----网页快照的实现">
 <meta property="og:url" content="http://HongtaoGao.github.io/2015/11/21/预处理系统（一）-网页快照的实现/index.html">
 <meta property="og:site_name" content="高洪涛的成长之路">
-<meta property="og:description" content="搜索引擎在收录网页时，对网页进行备份，存在自己的服务器缓存里，当用户在搜索引擎中点击“网页快照”链接时，搜索引擎将Spider系统当时所抓取并保存的网页内容展现出来，称为“网页快照”。本篇就介绍网页快照的基本实现————索引网页库。">
+<meta property="og:description" content="搜索引擎在收录网页时，对网页进行备份，存在自己的服务器缓存里，当用户在搜索引擎中点击“网页快照”链接时，搜索引擎将搜集系统当时所抓取并保存的网页内容展现出来，称为“网页快照”。本篇就介绍网页快照的基本实现————索引网页库。">
 <meta property="og:image" content="https://raw.githubusercontent.com/HongtaoGao/HongtaoGao.github.io/master/assets/blogImg/%E7%BD%91%E9%A1%B5%E5%BF%AB%E7%85%A71.PNG">
 <meta property="og:image" content="https://raw.githubusercontent.com/HongtaoGao/HongtaoGao.github.io/master/assets/blogImg/%E7%BD%91%E9%A1%B5%E5%BF%AB%E7%85%A72.PNG">
-<meta property="og:updated_time" content="2015-11-21T12:04:08.149Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/HongtaoGao/HongtaoGao.github.io/master/assets/blogImg/%E7%BD%91%E9%A1%B5%E9%A2%84%E5%A4%84%E7%90%86%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84.png">
+<meta property="og:updated_time" content="2015-11-21T13:22:02.555Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="预处理系统（一）----网页快照的实现">
-<meta name="twitter:description" content="搜索引擎在收录网页时，对网页进行备份，存在自己的服务器缓存里，当用户在搜索引擎中点击“网页快照”链接时，搜索引擎将Spider系统当时所抓取并保存的网页内容展现出来，称为“网页快照”。本篇就介绍网页快照的基本实现————索引网页库。">
+<meta name="twitter:description" content="搜索引擎在收录网页时，对网页进行备份，存在自己的服务器缓存里，当用户在搜索引擎中点击“网页快照”链接时，搜索引擎将搜集系统当时所抓取并保存的网页内容展现出来，称为“网页快照”。本篇就介绍网页快照的基本实现————索引网页库。">
   
     <link rel="alternative" href="/atom.xml" title="高洪涛的成长之路" type="application/atom+xml">
   
@@ -220,7 +221,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>搜索引擎在收录网页时，对网页进行备份，存在自己的服务器缓存里，当用户在搜索引擎中点击“网页快照”链接时，搜索引擎将Spider系统当时所抓取并保存的网页内容展现出来，称为“网页快照”。本篇就介绍网页快照的基本实现————索引网页库。<br><a id="more"></a><br>先直观体验下网页快照：</p>
+        <p>搜索引擎在收录网页时，对网页进行备份，存在自己的服务器缓存里，当用户在搜索引擎中点击“网页快照”链接时，搜索引擎将搜集系统当时所抓取并保存的网页内容展现出来，称为“网页快照”。本篇就介绍网页快照的基本实现————索引网页库。<br><a id="more"></a><br>先直观体验下网页快照：</p>
 <p>百度“搜索引擎原理”：</p>
 <div style="text-align: center"><br><img src="https://raw.githubusercontent.com/HongtaoGao/HongtaoGao.github.io/master/assets/blogImg/%E7%BD%91%E9%A1%B5%E5%BF%AB%E7%85%A71.PNG" alt="网页快照1"><br></div>
 
@@ -232,8 +233,30 @@
 <p><strong><strong>1. 由于网页快照是存储在搜索引擎服务器中，所以查看网页快照的速度往往比直接访问网页要快。</strong></strong>：注意，点击结果标题是直接访问网页，会重新抓取网页内容显示，而快照显示的内容是提前抓取的。</p>
 <p><strong><strong>2. 网页快照中，搜索的关键词用亮色显示，用户可以点击呈现亮色的关键词直接找到关键词出现位置，便于快速找到所需信息，提高搜索效率。</strong></strong></p>
 <p><strong><strong>3. 当搜索的网页被删除或链接失效时，可以使用网页快照来查看这个网页原始的内容。</strong></strong></p>
-<p>网页快照的核心就是如何建立高效的索引，使根据URL随机存取其所指向的网页。</p>
+<p>网页快照的核心就是建立高效的索引，使根据URL随机存取其所指向的网页。</p>
 <p>先来看下网页预处理系统结构：</p>
+<div style="text-align: center"><br><img src="https://raw.githubusercontent.com/HongtaoGao/HongtaoGao.github.io/master/assets/blogImg/%E7%BD%91%E9%A1%B5%E9%A2%84%E5%A4%84%E7%90%86%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84.png" alt="网页预处理系统结构"><br></div>
+
+<p>第一步就是为原始网页建立索引得到索引网页库，就可以为搜索引擎提供网页快照服务了；接下来针对索引网页库进行网页切分，将每一篇网页转化为词的集合；最后将网页到索引词的映射转化为索引词到网页的映射形成倒排文件。</p>
+<p>对于原始网页集R，可以通过顺序查找的方法，完成URL到指定记录的过程，但是会消耗大量的I/O，数据量增大的时候不满足搜索引擎的快速响应要求，所以需要建立索引，算法：</p>
+<pre><code>a.初始化文档编号id=0
+b.for each ri in R
+    <span class="operator"><span class="keyword">begin</span>
+        b1.读取ri的记录头部和数据<span class="keyword">read</span>(ri),得到<span class="keyword">URL</span>,ri在R中的偏移位置<span class="keyword">offset</span>和网页内容<span class="keyword">content</span>
+        b2.记录索引信息write(R,ri)
+            b2<span class="number">.1</span> 记录<span class="keyword">id</span>,<span class="keyword">offset</span>和digest(<span class="keyword">content</span>)得到网页索引文件
+            b2<span class="number">.2</span> 记录digest(<span class="keyword">URL</span>)和<span class="keyword">id</span>到<span class="keyword">URL</span>索引文件
+            b2<span class="number">.3</span> <span class="keyword">id</span>=<span class="keyword">id</span>+<span class="number">1</span>
+    <span class="keyword">end</span></span>
+</code></pre><p>网页索引文件格式：</p>
+<table><br><tbody><br><tr><td><em>文档编号</em></td><td><em>偏移位置</em></td><td><em>网页文档摘要</em></td></tr><br><tr><td>0</td><td>0</td><td>bc9ce846d7989c4534f53d423380ba70</td></tr><br><tr><td>1</td><td>76760</td><td>ec9c79896db534f5c480d4243ba73380</td></tr><br><tr><td>2</td><td>141624</td><td>846d7989c4bc9ca7034fe53380b53d42</td></tr><br><tr><td>……</td><td>……</td><td>……</td></tr><br><tr><td>12931</td><td>210383421</td><td>bc9ce989c4534f580ba70d73d4284633</td></tr><br><tr><td>12932</td><td>210411107</td><td>44233380baf553dd4bc9ce846707989c</td></tr><br></tbody><br></table>
+
+
+<p>URL索引文件格式：</p>
+<table><br><tbody><br><tr><td><em>URL摘要</em></td><td><em>文档编号</em></td></tr><br><tr><td>5c36868a9c5117eadbda747cbdb0725f</td><td>0</td></tr><br><tr><td>725fdbda5117ea68a9cdb0747cb5c368</td><td>1</td></tr><br><tr><td>1adbda151e725fdb7da747cbdb0725f7</td><td>2</td></tr><br><tr><td>……</td><td>……</td></tr><br><tr><td>97cb151e1db071adbda7ea68a25fca74</td><td>12931</td></tr><br></tbody><br></table>
+
+<p>当然，为了能够快速的对给定的URL找到对应的文档编号，需要对URL索引文件中的URL排序。</p>
+<p>总结，当用户点击网页快照的时候，搜索引擎的任务就是根据快照对应的URL找到对应的原始网页库中的内容：首先根据URL，采用二分查找算法，在URL索引文件中找到其对应文档id；再根据id在网页索引文件找到其在原始网页数据库中的偏移位置，从而定位网页并加载显示。</p>
 
       
     </div>
