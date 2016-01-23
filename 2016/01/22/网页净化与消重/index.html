@@ -11,9 +11,9 @@
 <meta property="og:url" content="http://HongtaoGao.github.io/2016/01/22/网页净化与消重/index.html">
 <meta property="og:site_name" content="高洪涛的成长之路">
 <meta property="og:description" content="网页的净化与消重是搜索引擎系统预处理环节的重要组成部分。网页净化就是识别和清除网页内的噪声内容，并提取网页的主题及主题相关的内容；消重是指去除网页集合中主题内容重复的网页。">
+<meta property="og:image" content="https://raw.githubusercontent.com/HongtaoGao/HongtaoGao.github.io/master/assets/blogImg/%E7%BD%91%E9%A1%B5%E5%87%80%E5%8C%96%E4%B8%8E%E6%B6%88%E9%87%8D1.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/HongtaoGao/HongtaoGao.github.io/master/assets/blogImg/%E7%89%B9%E5%BE%81%E6%9D%83%E5%80%BC%E8%AE%A1%E7%AE%97%E5%85%AC%E5%BC%8F.PNG">
-<meta property="og:image" content="https://raw.githubusercontent.com/HongtaoGao/HongtaoGao.github.io/master/assets/blogImg/%E7%89%B9%E5%BE%81%E6%9D%83%E5%80%BC%E8%AE%A1%E7%AE%97%E5%85%AC%E5%BC%8F.PNG">
-<meta property="og:updated_time" content="2016-01-23T04:58:36.470Z">
+<meta property="og:updated_time" content="2016-01-23T05:03:09.341Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="网页净化与消重">
 <meta name="twitter:description" content="网页的净化与消重是搜索引擎系统预处理环节的重要组成部分。网页净化就是识别和清除网页内的噪声内容，并提取网页的主题及主题相关的内容；消重是指去除网页集合中主题内容重复的网页。">
@@ -221,7 +221,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>网页的净化与消重是搜索引擎系统预处理环节的重要组成部分。网页净化就是识别和清除网页内的噪声内容，并提取网页的主题及主题相关的内容；消重是指去除网页集合中主题内容重复的网页。<br><a id="more"></a><br>今天发现，在写一篇笔记之前，先把整篇的结构用思维导图画出来比较好，便于从整体上理解各部分之间的关系。本篇的结构如下图：</p>
-<p><div style="text-align: center"><br><img src="https://raw.githubusercontent.com/HongtaoGao/HongtaoGao.github.io/master/assets/blogImg/%E7%89%B9%E5%BE%81%E6%9D%83%E5%80%BC%E8%AE%A1%E7%AE%97%E5%85%AC%E5%BC%8F.PNG" alt="特征权值计算公式"><br></div></p>
+<p><div style="text-align: center"><br><img src="https://raw.githubusercontent.com/HongtaoGao/HongtaoGao.github.io/master/assets/blogImg/%E7%BD%91%E9%A1%B5%E5%87%80%E5%8C%96%E4%B8%8E%E6%B6%88%E9%87%8D1.png" alt="笔记结构_网页净化与消重"><br></div></p>
 <h2 id="1-_网页的净化与元数据提取">1. 网页的净化与元数据提取</h2><p>什么是DocView模型，如何将HTML构造成标签树并量化表示，如何提取DocView模型元素。</p>
 <h3 id="1-1_DocView模型">1.1 DocView模型</h3><p>DocView模型包括：网页标识、网页类型、内容类别、标题、关键词、摘要、正文、相关链接等。其中正文和相关链接要素属于网页的<strong>内容数据</strong>，其他6项属于网页的<strong>元数据</strong>。</p>
 <p>网页类型：分为主题网页(topic)、Hub网页(hub)、图片网页(pic)。</p>
