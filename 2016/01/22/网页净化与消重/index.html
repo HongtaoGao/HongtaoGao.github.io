@@ -11,7 +11,8 @@
 <meta property="og:url" content="http://HongtaoGao.github.io/2016/01/22/网页净化与消重/index.html">
 <meta property="og:site_name" content="高洪涛的成长之路">
 <meta property="og:description" content="网页的净化与消重是搜索引擎系统预处理环节的重要组成部分。网页净化就是识别和清除网页内的噪声内容，并提取网页的主题及主题相关的内容；消重是指去除网页集合中主题内容重复的网页。">
-<meta property="og:updated_time" content="2016-01-23T02:21:34.523Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/HongtaoGao/HongtaoGao.github.io/master/assets/blogImg/%E7%89%B9%E5%BE%81%E6%9D%83%E5%80%BC%E8%AE%A1%E7%AE%97%E5%85%AC%E5%BC%8F.PNG">
+<meta property="og:updated_time" content="2016-01-23T03:05:15.451Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="网页净化与消重">
 <meta name="twitter:description" content="网页的净化与消重是搜索引擎系统预处理环节的重要组成部分。网页净化就是识别和清除网页内的噪声内容，并提取网页的主题及主题相关的内容；消重是指去除网页集合中主题内容重复的网页。">
@@ -113,7 +114,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/学习技巧/" style="font-size: 10px;">学习技巧</a> <a href="/tags/搜索引擎学习笔记/" style="font-size: 20px;">搜索引擎学习笔记</a> <a href="/tags/搜索引擎学习笔记-heh/" style="font-size: 10px;">搜索引擎学习笔记//heh</a> <a href="/tags/文史哲/" style="font-size: 10px;">文史哲</a>
+						<a href="/tags/学习技巧/" style="font-size: 10px;">学习技巧</a> <a href="/tags/搜索引擎学习笔记/" style="font-size: 20px;">搜索引擎学习笔记</a> <a href="/tags/文史哲/" style="font-size: 10px;">文史哲</a>
 					</div>
 				</section>
 				
@@ -206,6 +207,10 @@
       
       <div class="article-info article-info-post">
         
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/搜索引擎学习笔记/">搜索引擎学习笔记</a></li></ul>
+	</div>
+
         
 
         <div class="clearfix"></div>
@@ -225,8 +230,16 @@
 <p>2：重要信息标签：变大，粗体，斜体隐含着一定的内容重要性信息。</p>
 <p>3: 超链接相关的标签：用于挖掘网页间的内容相关性信息。</p>
 <p><strong>构造标签树的方法</strong>：<br>对于HTML语言，顺序整理容器标签的到标签树的框架；整理每个内容块中的超链标签、图片标签和重要信息标签形成基本的标签树；分析比内容块，获得其类型、属性，超链集和重要信息标签等，得到最终标签树。</p>
-<p>量化表示：</p>
-<p>一个文本被看作是一个特征向量(w1,w2,..,wn),其中wi是第i个特征项的权值，n是特征项的总数，这样每个文本就被映射到了向量空间的一点，因而向量空间中的点的距离就可以用来衡量其对应的文本的相似性。<br>为了体现重要信息标签中的内容，通常的做法是对重要信息标签中的内容加权值。由于网页中的标签结构是对页面布局的描述，我们不难得到这样的结论：如果某个内容块的中存在真实重要信息，那么这个内容块的重要性也相对较高；如果一个内容块的重要性较高，那么这个内容块的外层嵌套块的重要性也相对较高。可以看出，导致网页中内容块重要性增加的是包含真实重要内容的重要信息标签。基于这个结论，我们给网页中每个内容块赋予一个权值，用来表示这个内容块的重要性，并提出权值传递规则，从而得到每个内容块的权值。<br>特征权值计算：</p>
+<p>一个文本被看作是一个特征向量(w1,w2,..,wn),其中wi是第i个特征项的权值，n是特征项的总数，这样每个文本就被映射到了向量空间的一点，因而向量空间中的点的距离就可以用来衡量其对应的文本的相似性。</p>
+<p>为了体现重要信息标签中的内容，通常的做法是对重要信息标签中的内容加权值。由于网页中的标签结构是对页面布局的描述，我们不难得到这样的结论：如果某个内容块的中存在真实重要信息，那么这个内容块的重要性也相对较高；如果一个内容块的重要性较高，那么这个内容块的外层嵌套块的重要性也相对较高。可以看出，导致网页中内容块重要性增加的是包含真实重要内容的重要信息标签。基于这个结论，我们给网页中每个内容块赋予一个权值，用来表示这个内容块的重要性，并提出权值传递规则，从而得到每个内容块的权值。</p>
+<p><strong>特征权值计算</strong>：</p>
+<p><div style="text-align: center"><br><img src="https://raw.githubusercontent.com/HongtaoGao/HongtaoGao.github.io/master/assets/blogImg/%E7%89%B9%E5%BE%81%E6%9D%83%E5%80%BC%E8%AE%A1%E7%AE%97%E5%85%AC%E5%BC%8F.PNG" alt="特征权值计算公式"><br></div><br>其中，BWj表示内容块j的权值，BN表示网页中内容块的总数，n表示网页中不同关键词的总数；BTf(ij)表示关键词i出现在内容块j中的词频。</p>
+<h3 id="1-3_提取DocView模型要素的方法">1.3 提取DocView模型要素的方法</h3><p><strong>网页类型</strong>：<br>依据网页中间区域的内容判断网页类型。内容块分为topic、hub、pic，基于内容块的类型，我们可以使用网页中间区域hub内容块包含的词项数与网页中间区域的比值来判断是否为hub类型。同理，使用网页中间区域pic内容块包含的词项数与网页中间区域词项数的比值判断网页是否为pic类型。</p>
+<p>有主题网页的信息提取算法：</p>
+<p><strong>正文</strong>：<br>正文规则：有主题网页中，如果一个内容块是topic类型的，则该内容块中的内容为正文的一部分。<br>根据正文规则，深度优先遍历标签树并依次记录topic类型的内容块，就得到正文，也就是该网页的主题内容。<br><strong>关键词</strong>：<br>首先计算网页主题内容的特征向量：<br>算法如下略<br>根据特征项的权值选取关键词有绝对数量策略和相对数量策略。<br><strong>内容类别</strong>：<br>根据正文特征向量对其分类。<br><strong>标题</strong>：<br>网页的标题通常由<title>标签标识。针对没有没有标题或无描述能力标题的网页，从关键词集合中选取权值最高的作为网页标题。<br><strong>摘要</strong>：<br>摘要基于语句，语句基于段落，段落基于正文。<br>首先要从正文识别文章段落：<br>从完整的标签树—正文树—段落。<br>以正文的段落为单位，在各个段落中定位网页的关键词并累加关键词的权值作为关键词所在语句的权值；最后在各个段落中选取权值最大的语句，就组成摘要。<br><strong>相关链接</strong>：<br>基于假设：相同主题的超链接在网页中的位置是相近的，通常放在一个里层的内容块中或并列的几个最里层的内容块中。<br>超链选取的两种策略：</title></p>
+<p>1.基于anchor text的超链选取策略<br>Anchor text 是对超链所指向的网页简短、概要的说明，在一定程度上体现被指向网页的内容。基于anchor text的超链选取方法是比较每个hub类型内容块中的anchor text集合与正文的相似度来决定该块中链接的取舍。<br>通过本方法，可以对hub类型内容块中的超链进行取舍。而其他类型内容块中的超链通常是对正文中某些信息的详细说明，通常是内容相关的。因此，整理上述算法保留的hub类型内容块中的超链和其他类型内容块中的超链就构成了整篇网页的相关超链集。</p>
+<p>2.基于分类的超链选取策略<br>通过判断一个hub类型内容块中某个超链指向的网页和本网页正文的类别是否相同来决定该块中所有链接的内容相关性。该方法比 anchor text 准确，但需要动态抓取网页，时间开销大。</p>
+<h2 id="2-_网页消重">2. 网页消重</h2><p>消重技术的基本思想：为每个文档计算出一组指纹，若两个文档拥有一定数量的相同指纹，这两个文档的内容重叠性较高，也即二者是内容转载的。<br>在进行网页分析时，提取网页中的关键词和摘要信息，以关键词作为特征项，计算网页的特征向量。用特征向量和摘要进行一些计算就可以得到网页指纹，从而判断是否重复。</p>
 
       
     </div>
