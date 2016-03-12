@@ -11,7 +11,8 @@
 <meta property="og:url" content="http://HongtaoGao.github.io/2016/03/10/影响网页排名的若干因素/index.html">
 <meta property="og:site_name" content="高洪涛的成长之路">
 <meta property="og:description" content="影响网页排名的主要因素有网页质量、网页和查询词的相关性和用户偏好等，分别可用链接权值、相关性权值和用户权值表示。">
-<meta property="og:updated_time" content="2016-03-10T13:39:35.641Z">
+<meta property="og:image" content="https://github.com/HongtaoGao/HongtaoGao.github.io/blob/master/assets/blogImg/pagerank01.png">
+<meta property="og:updated_time" content="2016-03-12T03:46:26.650Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="影响网页排名的若干因素">
 <meta name="twitter:description" content="影响网页排名的主要因素有网页质量、网页和查询词的相关性和用户偏好等，分别可用链接权值、相关性权值和用户权值表示。">
@@ -219,8 +220,10 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>影响网页排名的主要因素有网页质量、网页和查询词的相关性和用户偏好等，分别可用链接权值、相关性权值和用户权值表示。<br><a id="more"></a></p>
-<h2 id="1-_PageRank与链接权值">1. PageRank与链接权值</h2><h3 id="1-1_基本思想">1.1 基本思想</h3><p>众所周知，Google革命性的发明是名为“PageRank”的网页排名算法，这项技术在1998年前后使得搜索性能有了质的飞跃，也奠定了Goole的基础。<br>PageRank的核心思想就是：如果一个网页被其他网页所链接，说明它受到普遍的承认和信赖，那么它的排名就高。当然还要考虑的就是网页排名高的网站的链接权重大。<br>举个例子，网页Y的排名应该来自于所有指向它的网页X1,X2,…XK的权重之和。如下图中，Y的网页排名PageRank=0.001+0.01+0.02+0.05=0.081。<br>那图中X1,X2,X3,X4的权重分别是多少呢，如何度量，应该是这些网页本身的PageRank。那么问题来了，也就是说计算网页的排名过程中需要用到网页本身的排名。<br>为了求解这个问题，把它转化成二维矩阵相乘的问题，并用迭代的方法解决。先假定</p>
-<h3 id="1-2_计算方法">1.2 计算方法</h3><h2 id="2-_TF-IDF与相关性劝权值">2. TF-IDF与相关性劝权值</h2><h2 id="3-_用户偏好与用户权值">3. 用户偏好与用户权值</h2>
+<h2 id="1-_PageRank与链接权值">1. PageRank与链接权值</h2><h3 id="1-1_基本思想">1.1 基本思想</h3><p>众所周知，Google革命性的发明是名为“PageRank”的网页排名算法，这项技术在1998年前后使得搜索性能有了质的飞跃，也奠定了Goole的基础。<br>PageRank的核心思想就是：<em>如果一个网页被其他网页所链接，说明它受到普遍的承认和信赖，那么它的排名就高。</em>当然还要考虑的就是网页排名高的网站的链接权重大。<br>举个例子，网页Y的排名应该来自于所有指向它的网页X1,X2,…XK的权重之和。如下图中，Y的网页排名PageRank=0.001+0.01+0.02+0.05=0.081。</p>
+<p><div style="text-align: center"><br><img src="https://github.com/HongtaoGao/HongtaoGao.github.io/blob/master/assets/blogImg/pagerank01.png" alt="pagerank01"><br></div><br>那图中X1,X2,X3,X4的权重分别是多少呢，如何度量，应该是这些网页本身的PageRank。那么问题来了，也就是说计算网页的排名过程中需要用到网页本身的排名。</p>
+<h3 id="1-2_计算方法">1.2 计算方法</h3><p>为了求解这个问题，把它转化成二维矩阵相乘的问题，并用迭代的方法解决。先假定所有的网页排名是相同的，并且根据这个初值，算出各个页面的第一次迭代排名，然后再根据第一次迭代排名算出第二次迭代排名。从理论上可以证明不论初值如何选取，这种算法都能保证网页排名的估计值能收敛到排名的真实值。<br>另外，互联网上的网页数量是巨大的，上面提到的二维矩阵从理论上讲有网页数量的二次方这么多个元素。这么大的矩阵相乘，计算量是非常大的。可以利用稀疏矩阵计算技巧，大大简化计算量。</p>
+<h2 id="2-_TF-IDF与相关性劝权值">2. TF-IDF与相关性劝权值</h2><h2 id="3-_用户偏好与用户权值">3. 用户偏好与用户权值</h2>
       
     </div>
     
