@@ -14,7 +14,10 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/HongtaoGao/HongtaoGao.github.io/master/assets/blogImg/pagerank01.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/HongtaoGao/HongtaoGao.github.io/master/assets/blogImg/pagerank02.PNG">
 <meta property="og:image" content="https://raw.githubusercontent.com/HongtaoGao/HongtaoGao.github.io/master/assets/blogImg/pagerank03.PNG">
-<meta property="og:updated_time" content="2016-03-12T07:08:37.151Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/HongtaoGao/HongtaoGao.github.io/master/assets/blogImg/pagerank04.PNG">
+<meta property="og:image" content="https://raw.githubusercontent.com/HongtaoGao/HongtaoGao.github.io/master/assets/blogImg/pagerank05.PNG">
+<meta property="og:image" content="https://raw.githubusercontent.com/HongtaoGao/HongtaoGao.github.io/master/assets/blogImg/pagerank06.PNG">
+<meta property="og:updated_time" content="2016-03-12T07:16:29.019Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="影响网页排名的若干因素">
 <meta name="twitter:description" content="影响网页排名的主要因素有网页质量、网页和查询词的相关性和用户偏好等，分别可用链接权值、相关性权值和用户权值表示。">
@@ -226,7 +229,10 @@
 <p><div style="text-align: center"><br><img src="https://raw.githubusercontent.com/HongtaoGao/HongtaoGao.github.io/master/assets/blogImg/pagerank01.png" alt="pagerank01"><br></div><br>那图中X1,X2,X3,X4的权重分别是多少呢，如何度量，应该是这些网页本身的PageRank。那么问题来了，也就是说计算网页的排名过程中需要用到网页本身的排名。</p>
 <h3 id="1-2_计算方法">1.2 计算方法</h3><p>为了求解这个问题，把它转化成二维矩阵相乘的问题，并用迭代的方法解决。先假定所有的网页排名是相同的，并且根据这个初值，算出各个页面的第一次迭代排名，然后再根据第一次迭代排名算出第二次迭代排名。从理论上可以证明不论初值如何选取，这种算法都能保证网页排名的估计值能收敛到排名的真实值。<br>另外，互联网上的网页数量是巨大的，上面提到的二维矩阵从理论上讲有网页数量的二次方这么多个元素。这么大的矩阵相乘，计算量是非常大的。可以利用稀疏矩阵计算技巧，大大简化计算量。<br>假定向量B：</p>
 <p><div style="text-align: center"><br>    <img src="https://raw.githubusercontent.com/HongtaoGao/HongtaoGao.github.io/master/assets/blogImg/pagerank02.PNG" alt="pagerank02"><br></div><br>为第一、第二、…第N个网页的网页排名。矩阵：</p>
-<p><div><br>    <img src="https://raw.githubusercontent.com/HongtaoGao/HongtaoGao.github.io/master/assets/blogImg/pagerank03.PNG" alt="pagerank03"><br></div><br>为网页之间的数目，其中a(mn)代表第m个网页到第n个网页的链接数。A是已知的，B是我们需要计算的。假定B(i)是第i次的迭代结果，那么：</p>
+<p><div style="text-align: center"><br>    <img src="https://raw.githubusercontent.com/HongtaoGao/HongtaoGao.github.io/master/assets/blogImg/pagerank03.PNG" alt="pagerank03"><br></div><br>为网页之间的数目，其中a(mn)代表第m个网页到第n个网页的链接数。A是已知的，B是我们需要计算的。假定B(i)是第i次的迭代结果，那么：</p>
+<p><div style="text-align: center"><br>    <img src="https://raw.githubusercontent.com/HongtaoGao/HongtaoGao.github.io/master/assets/blogImg/pagerank04.PNG" alt="pagerank04"><br></div><br>初始假设：所有网页的排名都相同为1/N，即：</p>
+<p><div style="text-align: center"><br>    <img src="https://raw.githubusercontent.com/HongtaoGao/HongtaoGao.github.io/master/assets/blogImg/pagerank05.PNG" alt="pagerank05"><br></div><br>通过如此计算就可以计算出B(1),B(2),…。可以证明最终B(i)会收敛。<br>另外，需要对网页排名的零概率或小概率事件进行平滑处理，引入小常数α：</p>
+<p><div style="text-align: center"><br>    <img src="https://raw.githubusercontent.com/HongtaoGao/HongtaoGao.github.io/master/assets/blogImg/pagerank06.PNG" alt="pagerank06"><br></div><br>网页排名的计算主要是矩阵相乘，可以分解成许多小任务并行处理，如Google采用的MapReduce工具。</p>
 <h2 id="2-_TF-IDF与相关性劝权值">2. TF-IDF与相关性劝权值</h2><h2 id="3-_用户偏好与用户权值">3. 用户偏好与用户权值</h2>
       
     </div>
