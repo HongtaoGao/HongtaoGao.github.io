@@ -17,7 +17,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/HongtaoGao/HongtaoGao.github.io/master/assets/blogImg/pagerank04.PNG">
 <meta property="og:image" content="https://raw.githubusercontent.com/HongtaoGao/HongtaoGao.github.io/master/assets/blogImg/pagerank05.PNG">
 <meta property="og:image" content="https://raw.githubusercontent.com/HongtaoGao/HongtaoGao.github.io/master/assets/blogImg/pagerank06.PNG">
-<meta property="og:updated_time" content="2016-03-12T07:20:35.324Z">
+<meta property="og:updated_time" content="2016-03-13T12:09:34.419Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="影响网页排名的若干因素">
 <meta name="twitter:description" content="影响网页排名的主要因素有网页质量、网页和查询词的相关性和用户偏好等，分别可用链接权值、相关性权值和用户权值表示。">
@@ -233,7 +233,8 @@
 <p><div style="text-align: center"><br>    <img src="https://raw.githubusercontent.com/HongtaoGao/HongtaoGao.github.io/master/assets/blogImg/pagerank04.PNG" alt="pagerank04"><br></div><br>初始假设：所有网页的排名都相同为1/N，即：</p>
 <p><div style="text-align: center"><br>    <img src="https://raw.githubusercontent.com/HongtaoGao/HongtaoGao.github.io/master/assets/blogImg/pagerank05.PNG" alt="pagerank05"><br></div><br>通过如此计算就可以计算出B(1),B(2),…。可以证明最终B(i)会收敛。<br>另外，需要对网页排名的零概率或小概率事件进行平滑处理，引入小常数α：</p>
 <p><div style="text-align: center"><br>    <img src="https://raw.githubusercontent.com/HongtaoGao/HongtaoGao.github.io/master/assets/blogImg/pagerank06.PNG" alt="pagerank06"><br></div><br>网页排名的计算主要是矩阵相乘，可以分解成许多小任务并行处理，如Google采用的MapReduce工具。</p>
-<h2 id="2-_TF-IDF与相关性权值">2. TF-IDF与相关性权值</h2><h2 id="3-_用户偏好与用户权值">3. 用户偏好与用户权值</h2>
+<h2 id="2-_TF-IDF与相关性权值">2. TF-IDF与相关性权值</h2><p>本节介绍如何度量网页和查询词的相关性。<br>例如，查找关于“原子能的应用”的网页。首先在索引中找到包含这三个词的网页，然后与查询关键词相关性高的网页的相关性权值大。“原子能的应用”可以分成三个关键词：原子能，的，应用。直觉上，这三个词出现较多的网页应该比它们出现较少的网页的相关性高，当然要根据网页的长度，对关键词的次数进行归一化，也就是用关键词的次数除以网页的总字数。这样就得到“单文本词频”(Term Frequency,TF)。比如，某个网页一共有1000个词，其中“原子能”、“的”和“应用”分别出现2次、35次和5次，那么TF分别是0.002、0.0035和0.005。将这三个数相加，0.0042就是相关网页的“原子能的应用”的“单文本词频”。<br>因此，度量网页和查询词的相关性，有一个简单的办法，就是直接使用各个关键词在网页中出项的总词频。具体来说，如果一个查询包含N个关键词w1,w2,…wN,它们在特定网页中的词频是TF1,TF2,…,TFN。那么这个查询和该网页的相似性就是：TF1+TF2+…+TFN。<br>细思，上述方法有两个漏洞：</p>
+<h2 id="3-_用户偏好与用户权值">3. 用户偏好与用户权值</h2>
       
     </div>
     
